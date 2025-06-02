@@ -62,7 +62,6 @@ The script uses a file named `devices.json` to store the list of previously dete
 
 * **`osascript` not found:** If you receive an error message about `osascript` not being found, it means that the command-line tools for desktop notifications are not installed or not in your system's PATH.  This is usually not an issue on macOS.
 * **No notifications:**  Ensure that desktop notifications are enabled in your macOS System Preferences.
-* **Script doesn't run:** Double-check that you have Python 3 installed and that the script is executable (`chmod +x main.py`).
 
 ## Future Improvements
 
