@@ -9,7 +9,11 @@ here = os.path.realpath(__file__).replace("main.py", "")
 ioRawData = common.bash("{}usb-info.sh".format(here))
 ioJSONData = json.loads(ioRawData)
 deviceListLocation = "{}devices.json".format(here)
-oldDeviceList = json.loads(common.fileToString(deviceListLocation))
+deviceListAlreadyExists = os.path.isfile(deviceListLocation)
+if deviceListAlreadyExists:
+    oldDeviceList = json.loads(common.fileToString(deviceListLocation))
+else:
+    oldDeviceList = {}
 newDeviceList = {}
 for device in ioJSONData["IORegistryEntryChildren"]:
     parentDevice = ioJSONData["IORegistryEntryName"]
