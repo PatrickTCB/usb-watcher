@@ -21,40 +21,40 @@ for device in ioJSONData["IORegistryEntryChildren"]:
         for child in device["IORegistryEntryChildren"]:
             parentDevice = device["IORegistryEntryName"]
             newDevice = {}
-            newDevice["parentDevice"] = parentDevice
-            newDevice["class"] = child["IOObjectClass"]
-            newDevice["name"] = child["IORegistryEntryName"]
-            newDeviceList[child["IORegistryEntryName"]] = newDevice
+            newDevice["parentDevice"] = parentDevice.strip()
+            newDevice["class"] = child["IOObjectClass"].strip()
+            newDevice["name"] = child["IORegistryEntryName"].strip()
+            newDeviceList[child["IORegistryEntryName"].strip()] = newDevice
             if a["v"]:
                 print("{} connected to {}".format(child["IORegistryEntryName"], parentDevice))
             if "IORegistryEntryChildren" in child.keys():
                 for grandchild in child["IORegistryEntryChildren"]:
                     parentDevice = child["IORegistryEntryName"]
                     newDevice = {}
-                    newDevice["parentDevice"] = parentDevice
-                    newDevice["class"] = grandchild["IOObjectClass"]
-                    newDevice["name"] = grandchild["IORegistryEntryName"]
-                    newDeviceList[grandchild["IORegistryEntryName"]] = newDevice
+                    newDevice["parentDevice"] = parentDevice.strip()
+                    newDevice["class"] = grandchild["IOObjectClass"].strip()
+                    newDevice["name"] = grandchild["IORegistryEntryName"].strip()
+                    newDeviceList[grandchild["IORegistryEntryName"].strip()] = newDevice
                     if a["v"]:
                         print("{} connected to {}".format(grandchild["IORegistryEntryName"], parentDevice))
                     if "IORegistryEntryChildren" in grandchild.keys():
                         for greatgrandchild in grandchild["IORegistryEntryChildren"]:
                             parentDevice = grandchild["IORegistryEntryName"]
                             newDevice = {}
-                            newDevice["parentDevice"] = parentDevice
-                            newDevice["class"] = greatgrandchild["IOObjectClass"]
-                            newDevice["name"] = greatgrandchild["IORegistryEntryName"]
-                            newDeviceList[greatgrandchild["IORegistryEntryName"]] = newDevice
+                            newDevice["parentDevice"] = parentDevice.strip()
+                            newDevice["class"] = greatgrandchild["IOObjectClass"].strip()
+                            newDevice["name"] = greatgrandchild["IORegistryEntryName"].strip()
+                            newDeviceList[greatgrandchild["IORegistryEntryName"].strip()] = newDevice
                             if a["v"]:
                                 print("{} connected to {}".format(greatgrandchild["IORegistryEntryName"], parentDevice))
                             if "IORegistryEntryChildren" in greatgrandchild.keys():
                                 for greatgreatgrandchild in greatgrandchild["IORegistryEntryChildren"]:
                                     parentDevice = greatgrandchild["IORegistryEntryName"]
                                     newDevice = {}
-                                    newDevice["parentDevice"] = parentDevice
-                                    newDevice["class"] = greatgreatgrandchild["IOObjectClass"]
-                                    newDevice["name"] = greatgreatgrandchild["IORegistryEntryName"]
-                                    newDeviceList[greatgreatgrandchild["IORegistryEntryName"]] = newDevice
+                                    newDevice["parentDevice"] = parentDevice.strip()
+                                    newDevice["class"] = greatgreatgrandchild["IOObjectClass"].strip()
+                                    newDevice["name"] = greatgreatgrandchild["IORegistryEntryName"].strip()
+                                    newDeviceList[greatgreatgrandchild["IORegistryEntryName"].strip()] = newDevice
                                     if "IORegistryEntryChildren" in greatgreatgrandchild.keys():
                                         print("{} has other devices".format(greatgreatgrandchild["IORegistryEntryName"]))
                                 
