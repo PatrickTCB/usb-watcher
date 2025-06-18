@@ -9,6 +9,9 @@ here = os.path.realpath(__file__).replace("main.py", "")
 ioRawData = common.bash("{}usb-info.sh".format(here))
 ioJSONData = json.loads(ioRawData)
 deviceListLocation = "{}devices.json".format(here)
+silent = False
+if "silent" in a.keys():
+    silent = True
 deviceListAlreadyExists = os.path.isfile(deviceListLocation)
 if deviceListAlreadyExists:
     oldDeviceList = json.loads(common.fileToString(deviceListLocation))
@@ -66,7 +69,8 @@ for deviceKey in newDeviceList.keys():
         title = "New USB Device Connected"
         message = "{} connected via {}".format(device["name"], device["parentDevice"])
         print("New device: {}".format(message))
-        common.desktopNotify(title, message)
+        if silent == False:
+            common.desktopNotify(title, message)
 common.stringToFile(deviceListLocation, json.dumps(newDeviceList))
 if nothingNew:
     print("No new USB devices found")
